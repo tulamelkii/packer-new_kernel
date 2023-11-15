@@ -1,11 +1,11 @@
 {
   "variables": {
-      "vm_name": "VDebian-12.7.0-amd64",
+      "vm_name": "VDebian-12.2.0-amd64",
       "numvcpus": "1",
-      "memsize": "1024",
-      "disk_size": "25000",
-      "iso_url": "https://cdimage.debian.org/cdimage/release/11.7.0/amd64/iso-cd/debian-11.7.0-amd64-netinst.iso",
-      "iso_checksum": "eb3f96fd607e4b67e80f4fc15670feb7d9db5be50f4ca8d0bf07008cb025766b",
+      "memsize": "2024",
+      "disk_size": "40000",
+      "iso_url": "https://cdimage.debian.org/cdimage/release/12.2.0/amd64/iso-cd/debian-12.2.0-amd64-netinst.iso",
+      "iso_checksum": "23ab444503069d9ef681e3028016250289a33cc7bab079259b73100daee0af66",
       "ssh_username" : "vagrant",
       "ssh_password" : "vagrant",
       "boot_wait": "5s"
@@ -14,11 +14,8 @@
       
 	    {
         "type": "virtualbox-iso",
-
 "boot_command": [
 		"<esc> auto preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg <enter> <wait>"
-
-
 ],
         "boot_wait": "{{ user `boot_wait` }}",
         "disk_size": "{{ user `disk_size` }}",
@@ -51,8 +48,7 @@
         "execute_command":"{{.Vars}} sudo -S -E bash '{{.Path}}'",
         "expect_disconnect":true,
               "scripts":[
-                 "scripts/kernel.sh",
-		 "scripts/clean.sh"
+                 "scripts/clean.sh"
               ],
         "pause_before":"20s",
         "start_retry_timeout":"1m",
@@ -60,5 +56,4 @@
      }
   ]
 }
-
 
